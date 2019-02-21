@@ -1,1 +1,3 @@
-# sersors_module
+# sensors_module
+
+- GPS ready
