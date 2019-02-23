@@ -1,0 +1,5 @@
+<launch>
+
+	<node name="gps_fake" pkg="gps_ros_test" type="GpsFake.py"/>
+
+</launch>
