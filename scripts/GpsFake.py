@@ -11,7 +11,7 @@ import roslib
 #FILE = open("GPSErroData.txt", "w")
 
 pGps = Twist()
-directory = "/home/sensors/catkin_ws/src/gps_ros_test/scripts/GpsLog/"
+directory = os.path.expanduser("~/catkin_ws/src/gps_ros_test/scripts/GpsLog/")
 filename = "GPSLog_CHIDO.txt"
 
 def gps():
