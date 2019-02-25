@@ -3,7 +3,7 @@ import time
 import serial
 import string #
 import os
-from GpsLibrary import GpsLibrary
+from lib.GpsLibrary import GpsLibrary
 #Import ros"
 import rospy
 from geometry_msgs.msg import Twist
