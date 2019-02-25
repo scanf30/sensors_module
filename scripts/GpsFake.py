@@ -68,12 +68,12 @@ def gps():
             if first_data:
                 first_data = 0
                 time.sleep(.1)
-                rospy.loginfo(pGps)
+                #rospy.loginfo(pGps)
                 pub.publish(pGps)
             else:
                 diff = curr_time - prev_time
                 time.sleep(diff)
-                rospy.loginfo(pGps)
+                #rospy.loginfo(pGps)
                 pub.publish(pGps)
 
             prev_time = curr_time
