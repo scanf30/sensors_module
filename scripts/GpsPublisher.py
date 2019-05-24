@@ -7,7 +7,6 @@ from lib.GpsLibrary import GpsLibrary
 #Import ros"
 import rospy
 from geometry_msgs.msg import Twist
-from gps_common.msg import GPSFix
 import roslib
 #from gps_ros_test.msg import GpsMyMsg
 """
@@ -18,12 +17,11 @@ port = "/dev/ttyAMA0" # the serial port to which the pi is connected.
 #create a serial object
 ser = serial.Serial(port, baudrate = 9600, timeout = 0.5)
 data='hi'
-gpsdata = GpsLibrary()
+gpsdata= GpsLibrary()
 """
 #FILE = open("GPSErroData.txt", "w")
 
-#pGps = Twist()
-pGps = GPSFix()
+pGps = Twist()
 
 def gps():
     global pGps
@@ -31,7 +29,7 @@ def gps():
     port = "/dev/ttyAMA0" # the serial port to which the pi is connected.
     ser = serial.Serial(port, baudrate = 9600, timeout = 0.5)
     gpsdata= GpsLibrary()
-    pub = rospy.Publisher('GPS',GPSFix, queue_size=10)
+    pub = rospy.Publisher('gpstopic',Twist, queue_size=10)
     rospy.init_node('gps',anonymous=True)
     rate = rospy.Rate(5)
     while not rospy.is_shutdown():
@@ -52,15 +50,12 @@ def gps():
             gpsdata.parseGPGGA(data)
         try:
             #rospy.loginfo(data)
-            pGps.latitude  = float(gpsdata.lat)
-            pGps.longitude = float(gpsdata.lon)
-            pGps.track     = float(gpsdata.angle)
-            #pGps.linear.x =  float(gpsdata.lat)
-            #pGps.linear.y =  float(gpsdata.lon)
-            #pGps.linear.z =  float(gpsdata.angle)
-            #pGps.angular.x = float(gpsdata.speed)
-            #pGps.angular.y = int(gpsdata.quality)
-            #pGps.angular.z = int(gpsdata.satellites)
+            pGps.linear.x =  float(gpsdata.lat)
+            pGps.linear.y =  float(gpsdata.lon)
+            pGps.linear.z =  float(gpsdata.angle)
+            pGps.angular.x = float(gpsdata.speed)
+            pGps.angular.y = int(gpsdata.quality)
+            pGps.angular.z = int(gpsdata.satellites)
             
             if gpsdata.errorGprmc == 0 and gpsdata.errorGgpga == 0 and Gprmc_fl == 1:
                 rospy.loginfo(pGps)
