@@ -20,7 +20,7 @@ class GpsLibrary:
     def parseGPGGA(self,data):
         #ggpga, timegpsGPGGA, latGGPGGA, latdirGPGGA, lonGPGGA, londirGPGGA,qualityGPGGA, numberSatellitesGPGGA, hdopGPGGA, heightGPGGA, heightUnitsGPGGA, ageCorrectionGPGGA,correctionStationGPGGA,checksumGPRMC, otherGPRMC = data.split(',')	
         ggpga = data.split(',')
-        print(ggpga)
+        #print(ggpga)
         try:
             #lat = float(ggpga[2])
             #lon = float(ggpga[4])
@@ -37,7 +37,7 @@ class GpsLibrary:
         #gpmrc, timegpsGPRMC, warningGPRMC, latGPRMC, latdirGPRMC, lonGPRMC, londirGPRMC, speedknotsGPRMC, truecurseGPRMC, dateGPRMC, angleGPRMC, checksumGPRMC, otherGPRMC = data.split(',')	
         gpmrc = data.split(',')	
         #print(data)
-        print(gpmrc)
+        #print(gpmrc)
         try:
             lat = float(gpmrc[3])
             lon = float(gpmrc[5])
